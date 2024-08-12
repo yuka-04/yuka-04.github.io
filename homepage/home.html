@@ -1,0 +1,691 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Yuko</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fa3b97c7-947b-4c0c-8386-4e08144577b5" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Yuko%20fa3b97c7947b4c0c83864e08144577b5/pexels-designecologist-975657-modified.png"/></div><h1 class="page-title">Yuko</h1><p class="page-description"></p></header><div class="page-body"><h3 id="a41260a0-8942-4658-87d9-82b785a7b6d6" class="block-color-gray">Professional Title</h3><hr id="47b22d2d-2bec-4285-89ee-73ca3115a44a"/><div id="28c028a5-308b-4a7d-ae24-2b7e4a661d2b" class="column-list"><div id="6f65c9e0-83bd-4729-8f6d-ee02692a9d71" style="width:25%" class="column"><h3 id="a372e97c-1e72-4e40-b2fa-1925b2b27de3" class="">Contact</h3><p id="cb51a8b6-dd0d-459c-9ca6-8a3d35938b97" class="block-color-gray">Location, State/Country</p><p id="7d9a5e70-3b2a-4f7a-aa4b-de67377915c1" class="block-color-gray">+00 123 456 789</p><p id="65f215b7-eb87-4245-8923-b6a6ab571cad" class="block-color-gray">hello@xyz.com</p><p id="284cacba-1ff5-4d33-8fd6-416948e4f3d6" class=""><a href="https://www.linkedin.com/login">LinkedIn</a></p></div><div id="bb8ec652-54dd-4604-9c32-667c51418ed5" style="width:75%" class="column"><h3 id="5516f02e-e233-4f5c-8a05-cb4e41c7ec53" class="">Profile</h3><p id="74f33a0e-de1a-4f5f-a3f2-c4b0ea696df1" class="block-color-gray">An &quot;about me&quot; section is the first part of your resume. It briefly describes your professional background, talents, and achievements. This part, which is similar to a resume summary but has a more conversational tone, is normally between three and four lines of text. People who want to change careers can use &quot;about me&quot; sections to show how their skills can be used elsewhere. </p><p id="b9eeab73-eb0a-412f-885d-c7af3648208f" class="">
+</p></div></div><div id="5419cfef-0cf6-4e2e-b7ae-e36f91fa1e2c" class="column-list"><div id="4469d47a-f9b7-4632-bdf9-67d673861536" style="width:25%" class="column"><hr id="7e349f5c-9102-409c-81d5-57c767d4ea40"/><h3 id="63513c13-3678-4f56-8b01-c3d8fbcb8968" class="">Skills</h3><p id="fd11c6a2-64f7-4df6-bde0-39b5cee3fd54" class=""><mark class="highlight-gray">Adobe Photoshop</mark></p><p id="0e468eae-a20b-4f75-85a4-07e266da9651" class="">◾◾◾◾◾</p><p id="cc4bff00-87a3-44b3-a5f9-a94a1efc00b2" class=""><mark class="highlight-gray">Canva</mark></p><p id="273d07be-9df4-4371-88f8-b6e3d737997b" class="">◾◾◾◾</p><p id="1fbe9254-0282-43e4-b754-d51bca6e3537" class=""><mark class="highlight-gray">Illustrator</mark></p><p id="fd459cea-4980-49ec-9c8e-2dd9be1e8088" class="">◾◾◾◾</p><p id="e5c1e310-5631-4023-8b63-fb4ea9af3204" class=""><mark class="highlight-gray">Microsoft Excel</mark></p><p id="514d4cec-e093-40a8-a132-d704004c0eaa" class="">◾◾◾◾◾</p><hr id="fe1e93f6-42d2-4ba6-a1fd-e3f32ae9d82e"/><h3 id="f52b610b-ec2a-4ed4-99d6-d7a6292e6081" class="">Languages</h3><p id="f043b11f-752c-46f1-a817-8c2b2ad60010" class=""><mark class="highlight-gray">English</mark></p><p id="35a0bd8c-cb48-4cbd-959b-ca6bb5dd46b9" class="">◾◾◾</p><p id="63bb953c-abe8-49e3-9f12-a4cb77cf36f7" class="">
+</p><p id="c68acbaa-c82d-4b44-b199-b57ce39646c0" class="">◾◾</p><hr id="1e154f32-e5f9-49a7-a162-2344ea50cb4c"/><h3 id="ee9fd8cc-e0a4-422f-a5c4-f6f0e4465b65" class="">Side Hustles</h3><p id="0f7bdd96-3515-49de-b021-6e973a7bb0c8" class=""><mark class="highlight-gray"><strong>Project Name</strong></mark></p><ul id="91ebc867-681b-4d99-b6d3-29b6632718d2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Accomplishment</mark></li></ul><ul id="b6418227-a3af-4c0f-bad3-eb471c5ced8a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Quantify your experience</mark></li></ul><ul id="58ca2ff8-147d-4a9b-9184-2b77041acb0a" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Highlight technical skills</li></ul><p id="041e3515-1c25-48c3-9537-a7e7dfe44f6b" class="">
+</p><p id="c0afdf7b-5a5d-420a-a6e5-e7f7537adb51" class="">
+</p></div><div id="f377da56-8ee3-482d-b9ce-998366e493f1" style="width:75%" class="column"><hr id="e6b2b9f4-8a36-4e85-81ad-893f9285768e"/><h3 id="bd99c711-7518-4c8e-9fdb-ae259ee0f42d" class="">Education</h3><p id="87af05da-b2b2-4ab1-9737-b8892f043e48" class=""><strong>奈良先端科学技術大学院大学</strong></p><p id="ed04066d-3167-4f11-a4af-ede56e36d87b" class="block-color-gray">Nara Institute of Science and Technology (NAIST)</p><p id="87fbf1ad-fb43-4538-b916-f11ddf97a998" class="">ソーシャル・コンピューティング研究室</p><p id="23964612-d7a3-45d0-8e42-1e07e6023cf0" class=""><mark class="highlight-gray">修士課程</mark></p><p id="d6650345-4426-4ce0-b6ed-1ec4cf6fd66e" class="">2025年9月卒業見込み</p><ul id="69d2a3a8-5555-4574-8d66-f00c98a80d79" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Mention the skills you’ve learned</mark></li></ul><ul id="1998ff08-33c0-436c-8dc0-de4003fedea3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Mention the skills you’ve learned</mark></li></ul><hr id="8246735a-c8f8-4a3a-a92d-c891f6e0ea64"/><p id="56b59919-4399-4bcb-b2ed-1a83eb71543b" class=""><strong>University Name</strong></p><p id="d10c3705-dd69-4899-baf0-a0c160ceb388" class=""><mark class="highlight-gray">Degree Title, Grade Earned</mark></p><p id="e9cb5ba3-9909-40ca-add1-54d56e3dce57" class=""><em><mark class="highlight-gray">Year of Passing</mark></em></p><ul id="5d059082-6e9a-441e-9c7b-8e052cf792b9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Mention the skills you’ve learned</mark></li></ul><ul id="47e15799-7658-4fb5-a013-bc3788c0de3e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Mention the skills you’ve learned</mark></li></ul><hr id="03e4fbba-24ed-4065-b9f9-9aa911859296"/><h3 id="ba09fd20-bc55-4a8e-ac89-b6939acd32f6" class="">Work Experience</h3><p id="4a9addee-5672-44a3-aebf-6c45128b48f3" class="">インターン</p><p id="d50e1a6f-0c88-485a-83e3-96b92a624749" class="block-color-gray">株式会社サグリ</p><p id="468b2c54-d677-4169-99fe-57b31c56d3a2" class="block-color-gray"><em>January 2018 - August 202</em></p><ul id="a3103ba0-c5fc-4f51-9bb2-7655a64e8e91" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Personalize your work experience to the job ad and incorporate important achievements to stand out.</li></ul><ul id="3f6e386b-6145-44fb-8f55-b099b16e33f7" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Use strong verbs to describe your responsibilities.</li></ul><ul id="795bc54c-62f9-496f-80cf-1aa27e6fc27c" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Keep your description to three or four main points.</li></ul><hr id="b83a513b-6709-4c6c-8f49-0a8d47da4f73"/><p id="9110bb72-4783-4cd4-92e6-1dc112c2a2cc" class="">研究補佐員</p><p id="5110f609-f891-42c2-a75b-b3412318aeb3" class="block-color-gray">奈良先端科学技術大学院大学</p><p id="d4ccf4e9-bbb5-4351-b78d-a4a59d7c640e" class="block-color-gray"><em>2023年5月〜2023年9月</em></p><ul id="40dce0c1-9132-4797-8242-c9644bdef024" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Personalize your work experience to the job ad and incorporate important achievements to stand out.</li></ul><ul id="240d1628-9f18-45c5-bcd4-368318b118d3" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Use strong verbs to describe your responsibilities.</li></ul><ul id="1d9e7017-e4d7-4c50-83f1-501ce34d3397" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Keep your description to three or four main points.</li></ul></div></div><hr id="a6d57b43-cc5e-4b73-8296-a94b7c42520f"/><div id="ac750d5f-c367-40d2-b377-e96749ca11e8" class="column-list"><div id="1149a3ad-2f42-4f93-b01a-5a9e6c821414" style="width:29.166666666666664%" class="column"><h3 id="b0f96d2e-3bc4-4389-8dbc-a6914cc8902f" class="">     Courses </h3><ul id="b3df24ed-c1e0-4868-836f-423474033341" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">3D Modelling</mark></li></ul><ul id="b8783cfb-48d2-412f-82d0-3ec3b08b5eb5" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Animation</mark></li></ul><ul id="c58240eb-0f1d-4ab3-98de-b35c4ff8f547" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Advertising and Graphics</li></ul></div><div id="6cbd22bb-c991-4cab-b279-8d1e8f89bd74" style="width:37.5%" class="column"><h3 id="0febc2af-427e-4196-b01c-4bcafc6adbf3" class="">     Achievements</h3><ul id="6a549251-6484-43e0-9ef0-20b9e43451ee" class="block-color-gray bulleted-list"><li style="list-style-type:disc">List out your achievements.</li></ul><ul id="ac699ba1-ba38-4482-a56a-632687af63b4" class="block-color-gray bulleted-list"><li style="list-style-type:disc">List out your achievements.</li></ul><ul id="e53148be-905e-4e2a-87a0-1e25b59078ac" class="block-color-gray bulleted-list"><li style="list-style-type:disc">List out your achievements.</li></ul></div><div id="22622ccc-7150-412e-be00-d3266d9bfe58" style="width:33.333333333333336%" class="column"><h3 id="2ade8f58-7dde-4f7a-a2d4-87c9bb4aac87" class="">  References</h3><p id="9cce0134-5156-4634-8bb1-20c967472222" class=""><mark class="highlight-gray">Add your references</mark></p><p id="b57f6900-8919-46db-a9b8-eb2fc005f1ff" class=""><mark class="highlight-gray">Add your references</mark></p><p id="853443d6-7915-400b-b160-477854e8efd8" class=""><mark class="highlight-gray">Add your references</mark></p></div></div><hr id="4f5c338f-ff6e-4e54-8f6a-bd447d216df1"/><p id="2e3415a9-efce-42f6-9e12-7c44856cafd2" class="">
+</p><p id="cca9093a-74f9-458c-b3ab-0e52d10c583d" class="">
+</p><p id="1a21da63-f58d-4c9e-bfbf-bf1eda043bc4" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
